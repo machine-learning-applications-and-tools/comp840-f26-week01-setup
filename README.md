@@ -8,6 +8,7 @@ make your first calls to a language model, plus a shared helper module.
 | `hello_1_call.py`      | The basics: one prompt, one answer                     |
 | `hello_2_variance.py`  | The same prompt gives different answers (non-determinism) |
 | `hello_3_cost.py`      | Reading token counts and estimating cost at scale       |
+| `tooltest.py`          | Function calling end to end: model requests a tool, we run it, model answers |
 
 `config.py` and `llm.py` are shared by every lab this term — read `llm.py`
 once, but you won't need to edit it. `doctor.py` checks that your setup is
@@ -64,5 +65,5 @@ Then `hello_2_variance.py`, then `hello_3_cost.py`, the same way.
 ## Submitting
 
 Fill in `OUTPUT.md` with what you observed for each script, commit your
-work, and push to this repository. Add your instructor as a collaborator
+work, and push to this repository. Add me (karen-jin) as a collaborator
 under Settings → Collaborators so your work can be reviewed.
