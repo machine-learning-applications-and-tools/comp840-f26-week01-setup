@@ -18,14 +18,18 @@ How to run this file:
 from llm import generate
 
 # ---------------------------------------------------------------------
-# PRICING USD per 1 million tokens.
+# PRICING USD per 1 million tokens. Verified 1 September 2026.
 #
 # These numbers WILL go stale. Prices change, and course labs run for
 # years. Verify the current numbers at: https://ai.google.dev/pricing
+#
+# Rows match the two models actually named in config.py, not a generic
+# "flash"/"pro" split -- flash-lite is MODEL (what this script calls),
+# flash-large is MODEL_LARGE.
 # ---------------------------------------------------------------------
 PRICING = {
-    "flash": {"input_per_million": 0.075, "output_per_million": 0.30},
-    "pro":   {"input_per_million": 1.25,  "output_per_million": 5.00},
+    "flash-lite":  {"input_per_million": 0.30, "output_per_million": 2.50},  # gemini-3.5-flash-lite
+    "flash-large": {"input_per_million": 0.75, "output_per_million": 3.75},  # gemini-3.7-flash
 }
 
 N_CALLS = 10_000
@@ -58,7 +62,7 @@ for tier, rates in PRICING.items():
     output_cost = (output_tokens * N_CALLS / 1_000_000) * rates["output_per_million"]
     total_cost = input_cost + output_cost
     print(
-        f"  {tier:5s}: {N_CALLS:,} calls -> "
+        f"  {tier:11s}: {N_CALLS:,} calls -> "
         f"${input_cost:,.2f} input + ${output_cost:,.2f} output "
         f"= ${total_cost:,.2f} total"
     )
